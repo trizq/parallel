@@ -1,0 +1,5 @@
+﻿  FileServer.cpp
+d:\filecs\fileserver\fileserver.cpp(23): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
+d:\filecs\fileserver\fileserver.cpp(80): warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\um\winsock2.h(1849): note: 参见“inet_ntoa”的声明
+  fileServer.vcxproj -> D:\fileCS\Debug\fileServer.exe
