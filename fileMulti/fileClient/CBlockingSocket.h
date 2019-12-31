@@ -135,7 +135,7 @@ INT CBlockingSocket::Recv(char *recvbuf, int recvbuflen)
 	}
 	else if (iResult == 0)
 	{
-		printf("Receiving over...\n");
+		printf("one of three part receiving over...\n");
 		return -1;
 	}
 	else

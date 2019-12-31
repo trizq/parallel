@@ -7,7 +7,8 @@
 
 
 using namespace std;
-BYTE filename[100] = { "C:\\Users\\Administrator\\Desktop\\123.txt" };
+
+BYTE filename[100] = { "C:\\Users\\Administer\\Desktop\\123.txt" };
 char serverPORT[100] = { 0 };
 int i;
 int m;
@@ -16,17 +17,15 @@ char conNum[100] = { 0 };
 HANDLE ghMutex;
 int fileLength;
 
+
 DWORD WINAPI serverthread(LPVOID lpParameter)
 {
 	CBlockingSocket *cs = (CBlockingSocket *)lpParameter;
 	CBlockingSocket ClientSocket = *cs;//用局部变量保存线程传进来的地址传递的参数，防止主线程中socket被改写。
 	cout << "进入发的线程..." << endl;
 	cout << "  File requested from the client: " << filename << endl;
-	//WaitForSingleObject(
-	//		ghMutex,    // handle to mutex
-	//		INFINITE);
 	ClientSocket.Read(conNum, 100);
-	cout << "conNum的值是：" << conNum << endl;
+	//cout << "conNum的值是：" << conNum << endl;
 	m = atoi(conNum);
 	//m = (int)conNum[0];
 	//cout << "m的值是：" << m << endl;
@@ -37,8 +36,7 @@ DWORD WINAPI serverthread(LPVOID lpParameter)
 	fileLength = fileLength / 3;
 	//infile.seekg(0 + num * fileLength, ios::beg);
    //cout << "文件总长度:" << fileLength << endl;
-   //cout << "文件长度（int）:" << i* fileLength/3 << endl;
-   //cout <<"文件长度（float）:" <<(float)fileLength/3 << endl;
+  
 	num = m;
 	infile.seekg(0 + num * fileLength, ios::beg);
 	//infile.seekg(0, ios::beg);
@@ -111,10 +109,9 @@ int main(int argc, char *argv[])
 	HANDLE aThread;
 	DWORD ThreadID;
 
-	cout << "输入端口号：" << endl;
+	cout << "输入端口号（请分别输入默认端口号7777、7778和7779中的一个）：" << endl;
 	cin >> serverPORT;
-	//cout << "输入连接的第几个服务器：" << endl;
-	//cin >> i;
+	
 	aThread = CreateThread(
 		NULL,       // default security attributes
 		0,          // default stack size
