@@ -25,7 +25,7 @@ public:
 	//BOOL		Accept();  // accept the client socket
 	CBlockingSocket Accept(struct sockaddr &their_addr);
 	BOOL		Send(BYTE *s, UINT count);  // send package
-	INT			Read(BYTE *s, UINT count);  // receive package
+	INT			Read(char *s, UINT count);  // receive package
 	int HintsAndResult(const char *ip, const char *port);
 	static int Initialize();
 	static void Cleanup();
@@ -136,7 +136,7 @@ BOOL CBlockingSocket::Send(BYTE *s, UINT count)
 	}
 }
 
-INT CBlockingSocket::Read(BYTE *s, UINT count)
+INT CBlockingSocket::Read(char *s, UINT count)
 {
 	int recvLen = recv(m_socket, (char *)s, count, 0);
 	if (recvLen == SOCKET_ERROR || recvLen == 0)

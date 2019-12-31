@@ -14,7 +14,7 @@ public:
 	BOOL		Close();  // close socket
 	BOOL		Listen(const char *port);  // listen socket
 	BOOL		Accept();  // accpet the client socket
-	BOOL		Send(BYTE *s, UINT count);  // send package
+	BOOL		Send(char *s, UINT count);  // send package
 	INT			Read(BYTE *s, UINT count);  // receive package
 	INT         Recv(char *recvbuf, int recvbuflen);
 	static void Cleanup();
@@ -99,7 +99,7 @@ BOOL CBlockingSocket::Accept()
 	return TRUE;
 }
 
-BOOL CBlockingSocket::Send(BYTE *s, UINT count)
+BOOL CBlockingSocket::Send(char *s, UINT count)
 {
 	int sendLen = send(m_socket, (char *)s, count, 0);
 	if (sendLen > 0)
@@ -135,7 +135,7 @@ INT CBlockingSocket::Recv(char *recvbuf, int recvbuflen)
 	}
 	else if (iResult == 0)
 	{
-		printf("Connection closed\n");
+		printf("Receiving over...\n");
 		return -1;
 	}
 	else
