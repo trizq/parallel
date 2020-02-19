@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.soft.dao.OutMapper">
+
+    <select id="selectOut" resultType="Out">
+        select * from outs
+    </select>
+    <select id="selectOutbyid" resultType="Out">
+        select * from outs where out_id = #{out_id}
+    </select>
+    <select id="selectOutbystatus" resultType="Out">
+        select * from outs where out_status = #{out_status}
+    </select>
+    <insert id="addOut" parameterType="Out">
+        insert into outs(out_ware,out_price,out_reason,out_time,out_user,out_status)
+        values (#{out_ware},#{out_price},#{out_reason},#{out_time},#{out_user},#{out_status})
+    </insert>
+    <select id="selectOutbyname" resultType="Out">
+        select * from outs where out_ware=#{name} and out_status=#{status}
+    </select>
+    <update id="updateOutbyname" parameterType="Out">
+        update outs set out_ware=#{out_ware},out_price=#{out_price},out_reason=#{out_reason},out_time=#{out_time},out_user=#{out_user},out_status=#{out_status}
+        where out_id=#{out_id}
+    </update>
+    <update id="updateOutbyid" parameterType="Out">
+        update outs set out_ware=#{out_ware},out_price=#{out_price},out_reason=#{out_reason},out_time=#{out_time},out_user=#{out_user},out_status=#{out_status}
+        where out_id=#{out_id}
+    </update>
+    <delete id="deleteOut" parameterType="int">
+        delete from outs where out_id=#{out_id}
+    </delete>
+</mapper>

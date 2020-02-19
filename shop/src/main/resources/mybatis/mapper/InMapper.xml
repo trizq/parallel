@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.soft.dao.InMapper">
+
+    <select id="selectIn" resultType="In">
+     select * from ins
+    </select>
+    <select id="selectInbyname" resultType="In">
+        select * from ins where in_ware=#{name} and in_status=#{status}
+    </select>
+
+    <insert id="addIn" parameterType="In">
+        insert into ins(in_ware,in_price,in_reason,in_time,in_user,in_status)
+        values (#{in_ware},#{in_price},#{in_reason},#{in_time},#{in_user},#{in_status})
+    </insert>
+
+    <update id="updateInbyname" parameterType="In">
+        update ins set in_ware=#{in_ware},in_price=#{in_price},in_reason=#{in_reason},in_time=#{in_time},in_user=#{in_user},in_status=#{in_status}
+        where in_id=#{in_id}
+    </update>
+
+    <select id="selectInbyid" resultType="In">
+        select * from ins where in_id = #{id}
+    </select>
+
+    <update id="updateInbyid" parameterType="In">
+        update ins set in_ware=#{in_ware},in_price=#{in_price},in_reason=#{in_reason},in_time=#{in_time},in_user=#{in_user},in_status=#{in_status}
+        where in_id=#{in_id}
+    </update>
+
+    <delete id="deleteIn" parameterType="int">
+        delete from ins where in_id=#{in_id}
+    </delete>
+
+    <select id="selectInbystatus" resultType="In">
+        select * from ins where in_status = #{in_status}
+    </select>
+
+
+
+</mapper>
